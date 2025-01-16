@@ -1,4 +1,8 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';
@@ -33,11 +37,32 @@ export class AuthService {
   }
 
   async register(registerDto: RegisterDto) {
-    const hashedPassword = await bcrypt.hash(registerDto.senha, 10);
-    return this.usuarioService.createUsuario({
+    const { email, senha } = registerDto;
+
+    const existingUser = await this.usuarioService.findByEmail(email);
+    if (existingUser) {
+      throw new ConflictException('O e-mail já está em uso.');
+    }
+
+    const hashedPassword = await bcrypt.hash(senha, 10);
+
+    const newUser = await this.usuarioService.createUsuario({
       ...registerDto,
       senha: hashedPassword,
     });
+
+    const payload = {
+      sub: newUser.id,
+      email: newUser.email,
+      nome: newUser.nome,
+    };
+
+    return {
+      id: newUser.id,
+      nome: newUser.nome,
+      email: newUser.email,
+      access_token: this.jwtService.sign(payload),
+    };
   }
 
   async forgotPassword(forgotPasswordDto: ForgotPasswordDto) {
@@ -46,7 +71,6 @@ export class AuthService {
       throw new UnauthorizedException('Usuário não encontrado');
     }
 
-    // Aqui você pode enviar um email com um token para redefinir a senha
     return { message: 'Instruções enviadas para o email' };
   }
 
