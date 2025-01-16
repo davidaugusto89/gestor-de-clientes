@@ -10,11 +10,11 @@ async function bootstrap() {
 
   // Configuração do Swagger
   const config = new DocumentBuilder()
-    .setTitle('Documentação da API - QEntregas') // Título da documentação
+    .setTitle('Documentação da API - QEntregas')
     .setDescription(
       'Esta é a documentação da API para o projeto de exemplo da QEntregas. A API oferece endpoints para gerenciar clientes. Utiliza boas práticas de desenvolvimento, incluindo autenticação JWT e validação com DTOs.',
-    ) // Descrição mais detalhada
-    .setVersion('1.0') // Versão inicial da API
+    )
+    .setVersion('1.0')
     .addBearerAuth(
       {
         type: 'http',
@@ -22,15 +22,15 @@ async function bootstrap() {
         bearerFormat: 'JWT',
       },
       'access-token',
-    ) // Configuração para autenticação JWT
-    .addTag('Health', 'Endpoints de saude da API') // Categoria geral
-    .addTag('Autenticação', 'Endpoints para autenticação') // Outra categoria específica
-    .addTag('Usuários', 'Endpoints para cadastro e gerenciamento de usuários') // Outra categoria específica
-    .addTag('Clientes', 'Endpoints para cadastro e gerenciamento de clientes') // Outra categoria específica
+    )
+    .addTag('Health', 'Endpoints de saúde da API')
+    .addTag('Autenticação', 'Endpoints para autenticação')
+    .addTag('Usuários', 'Endpoints para cadastro e gerenciamento de usuários')
+    .addTag('Clientes', 'Endpoints para cadastro e gerenciamento de clientes')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api-docs', app, document);
+  SwaggerModule.setup('docs', app, document);
 
   await app.listen(process.env.PORT ?? 3000);
 
