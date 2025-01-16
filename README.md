@@ -24,7 +24,7 @@ Este é um projeto fullstack que utiliza **NestJS** para o backend e **VueJS** c
 
 ### Pré-requisitos
 - **Docker** e **Docker Compose** instalados.
-- Permissões para executar scripts (`chmod +x setup.sh` no Linux/Mac).
+- Permissões para executar scripts (`chmod +x scripts/setup.sh` no Linux/Mac).
 
 ### Passos para Configuração
 1. Clone o repositório:
@@ -38,15 +38,20 @@ Este é um projeto fullstack que utiliza **NestJS** para o backend e **VueJS** c
    ./scripts/setup.sh
    ```
 
-   Este script irá:
-   - Instalar dependências do frontend e backend.
-   - Inciar o Docker
-   - Copiar os arquivos `.env.example` para `.env` em cada diretório.
+   Este script realiza as seguintes etapas:
+
+   - Copia os arquivos `.env.example` para `.env` nos diretórios do backend e frontend, se os arquivos `.env` não existirem.
+   - Sobe os containers definidos no `docker-compose.yml` usando Docker Compose.
+   - Aguarda até que o banco de dados MariaDB esteja pronto para conexões.
+   - Executa as migrations e seeders automaticamente no backend.
+   - Exibe os links para acesso ao frontend, backend e PhpMyAdmin.
 
 3. Acesse:
-   - **Frontend**: [http://localhost](http://localhost)
-   - **Backend Swagger**: [http://localhost/api](http://localhost/api)
-   - **PhpMyAdmin**: [http://localhost:8080](http://localhost:8081)
+   - **Frontend via proxy reverso:** [http://localhost](http://localhost)
+   - **Frontend sem proxy reverso:** [http://localhost:5173](http://localhost:5173)
+   - **Backend via proxy reverso:** [http://localhost/api](http://localhost/api)
+   - **Backend sem proxy reverso:** [http://localhost:3000/api](http://localhost:3000/api)
+   - **PhpMyAdmin:** [http://localhost:8081](http://localhost:8081)
 
 ## 📝 Documentação da API
 
