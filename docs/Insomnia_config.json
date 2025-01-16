@@ -1,0 +1,139 @@
+{
+    "_type": "export",
+    "__export_format": 4,
+    "__export_date": "2025-01-16T21:42:27.839Z",
+    "__export_source": "insomnia.desktop.app:v10.3.0",
+    "resources": [
+        {
+            "_id": "req_afaaefdbbc184e48afc8da5a0f35f8d7",
+            "parentId": "wrk_3324173698bf4401b33ac47a9de7f16d",
+            "modified": 1737061053600,
+            "created": 1737060514648,
+            "url": "{{ _.baseURL }}/status",
+            "name": "Status",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/10.3.0"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1737060514648,
+            "isPrivate": false,
+            "pathParameters": [],
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "wrk_3324173698bf4401b33ac47a9de7f16d",
+            "parentId": null,
+            "modified": 1737060471642,
+            "created": 1737060471642,
+            "name": "QEntregas",
+            "description": "",
+            "scope": "collection",
+            "_type": "workspace"
+        },
+        {
+            "_id": "req_d3c4f3da09e64d4ba89ac0fc6b7a52fa",
+            "parentId": "fld_0b0080b695bc4d31825a97cc445b927b",
+            "modified": 1737061640089,
+            "created": 1737061395286,
+            "url": "{{ _.baseURL }}/auth/login",
+            "name": "Login",
+            "description": "",
+            "method": "POST",
+            "body": {
+                "mimeType": "application/json",
+                "text": "{\n\t\"email\": \"admin@example.com\",\n\t\"senha\": \"123456\"\n}"
+            },
+            "parameters": [
+                {
+                    "id": "pair_117a9d6796d04830838ea8620456f46a",
+                    "name": "",
+                    "value": "",
+                    "description": "",
+                    "disabled": false
+                }
+            ],
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/10.3.0",
+                    "id": "pair_ddae9762440048aaab71974d2d92f11c"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1737061398434,
+            "isPrivate": false,
+            "pathParameters": [],
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "fld_0b0080b695bc4d31825a97cc445b927b",
+            "parentId": "wrk_3324173698bf4401b33ac47a9de7f16d",
+            "modified": 1737061386311,
+            "created": 1737061383204,
+            "name": "Auth",
+            "description": "",
+            "environment": {},
+            "environmentPropertyOrder": null,
+            "metaSortKey": -1737060514548,
+            "environmentType": "kv",
+            "_type": "request_group"
+        },
+        {
+            "_id": "env_47ac9861d4bdd6ab57121ed05ff5149740547170",
+            "parentId": "wrk_3324173698bf4401b33ac47a9de7f16d",
+            "modified": 1737061046145,
+            "created": 1737060471644,
+            "name": "Base Environment",
+            "data": {
+                "baseURL": "http://localhost:3000/api"
+            },
+            "dataPropertyOrder": null,
+            "color": null,
+            "isPrivate": false,
+            "metaSortKey": 1737060471644,
+            "environmentType": "kv",
+            "kvPairData": [
+                {
+                    "id": "envPair_b554af440a894c54882ecf6d571c4a1b",
+                    "name": "baseURL",
+                    "value": "http://localhost:3000/api",
+                    "type": "str",
+                    "enabled": true
+                }
+            ],
+            "_type": "environment"
+        },
+        {
+            "_id": "jar_47ac9861d4bdd6ab57121ed05ff5149740547170",
+            "parentId": "wrk_3324173698bf4401b33ac47a9de7f16d",
+            "modified": 1737060471646,
+            "created": 1737060471646,
+            "name": "Default Jar",
+            "cookies": [],
+            "_type": "cookie_jar"
+        }
+    ]
+}

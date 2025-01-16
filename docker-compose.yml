@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+  nginx:
+    container_name: qentregas-nginx
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - backend
+      - frontend
+
+  backend:
+    container_name: qentregas-backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - database
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+      - ./backend/.env:/app/.env
+    command: npm run start:dev
+
+  frontend:
+    container_name: qentregas-frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - ./frontend/.env:/app/.env
+    stdin_open: true
+    tty: true
+    command: npm run dev
+
+  database:
+    container_name: qentregas-database
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: app_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpassword
+    volumes:
+      - dbdata:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  phpmyadmin:
+    container_name: qentregas-phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    environment:
+       PMA_HOST: database
+       PMA_USER: root
+       PMA_PASSWORD: rootpassword
+       PMA_ARBITRARY: 1
+    ports:
+      - "8081:80"
+
+volumes:
+  dbdata:
