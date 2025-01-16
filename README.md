@@ -29,8 +29,8 @@ Este é um projeto fullstack que utiliza **NestJS** para o backend e **VueJS** c
 ### Passos para Configuração
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/seu-repositorio.git
-   cd seu-repositorio
+   git clone https://github.com/davidaugusto89/qentregas.git
+   cd qentregas
    ```
 
 2. Execute o script de setup:
