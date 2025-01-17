@@ -26,6 +26,9 @@ export class UsuarioEntity {
   @Column({ type: 'varchar', nullable: true })
   resetToken: string | null;
 
+  @Column({ type: 'timestamp', nullable: true })
+  resetTokenExpiration: Date | null;
+
   @CreateDateColumn({ type: 'timestamp' })
   DataHoraCadastro: Date;
 }

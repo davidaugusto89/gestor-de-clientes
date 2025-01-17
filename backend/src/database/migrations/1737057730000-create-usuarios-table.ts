@@ -45,6 +45,11 @@ export class CreateUsuariosTable1737029880495 implements MigrationInterface {
             isNullable: true,
           },
           {
+            name: 'resetTokenExpiration',
+            type: 'timestamp',
+            isNullable: true,
+          },
+          {
             name: 'DataHoraCadastro',
             type: 'timestamp',
             default: 'CURRENT_TIMESTAMP',
@@ -55,6 +60,6 @@ export class CreateUsuariosTable1737029880495 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('users');
+    await queryRunner.dropTable('usuarios');
   }
 }

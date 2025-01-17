@@ -1,20 +1,20 @@
 # Base na versão mais recente do Node.js
 FROM node:latest
 
-# Definir o diretório de trabalho
+# Defina o diretório de trabalho dentro do container
 WORKDIR /app
 
-# Copiar apenas os arquivos essenciais de dependências
-COPY package.json ./
+# Copie os arquivos de dependências
+COPY package.json package-lock.json* ./
 
-# Instalar dependências com npm
+# Instale todas as dependências, incluindo devDependencies
 RUN npm install
 
-# Copiar o restante do código para o container
+# Copie o restante dos arquivos para o container
 COPY . .
 
-# Expor a porta do aplicativo
-EXPOSE 3000
+# Exponha a porta usada pelo Vite
+EXPOSE 5173
 
-# Comando para iniciar o aplicativo em modo desenvolvimento
-CMD ["npm", "run", "start:dev"]
+# Comando padrão para iniciar o servidor de desenvolvimento
+CMD ["npm", "run", "dev"]

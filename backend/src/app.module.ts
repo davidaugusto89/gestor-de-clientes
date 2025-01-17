@@ -14,6 +14,7 @@ import { AuthModule } from '@/auth/auth.module';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
+      envFilePath: '/app/.env',
     }),
     TypeOrmModule.forRootAsync({
       useFactory: async () => {

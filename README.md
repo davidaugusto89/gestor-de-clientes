@@ -40,7 +40,6 @@ Este é um projeto fullstack que utiliza **NestJS** para o backend e **VueJS** c
 
    Este script realiza as seguintes etapas:
 
-   - Copia os arquivos `.env.example` para `.env` nos diretórios do backend e frontend, se os arquivos `.env` não existirem.
    - Sobe os containers definidos no `docker-compose.yml` usando Docker Compose.
    - Aguarda até que o banco de dados MariaDB esteja pronto para conexões.
    - Executa as migrations e seeders automaticamente no backend.

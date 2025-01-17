@@ -23,8 +23,6 @@ services:
       - database
     volumes:
       - ./backend:/app
-      - /app/node_modules
-      - ./backend/.env:/app/.env
     command: npm run start:dev
 
   frontend:
@@ -36,8 +34,6 @@ services:
       - "5173:5173"
     volumes:
       - ./frontend:/app
-      - /app/node_modules
-      - ./frontend/.env:/app/.env
     stdin_open: true
     tty: true
     command: npm run dev

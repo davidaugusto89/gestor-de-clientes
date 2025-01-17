@@ -5,7 +5,7 @@ FROM node:latest
 WORKDIR /app
 
 # Copie os arquivos de configuração de dependências
-COPY package.json ./
+COPY package.json package-lock.json ./
 
 # Instale as dependências do projeto com npm
 RUN npm install
