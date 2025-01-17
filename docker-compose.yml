@@ -66,5 +66,12 @@ services:
     ports:
       - "8081:80"
 
+  mailhog:
+    container_name: qentregas-mailhog
+    image: mailhog/mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
 volumes:
   dbdata:

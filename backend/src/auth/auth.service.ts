@@ -9,13 +9,16 @@ import { RegisterDto } from './dto/register.dto';
 import { ForgotPasswordDto } from './dto/forgot-password.dto';
 import { ResetPasswordDto } from './dto/reset-password.dto';
 import * as bcrypt from 'bcrypt';
+import * as crypto from 'crypto';
 import { UsuariosService } from '@/usuarios/usuarios.service';
+import { MailerService } from '@/mailer/mailer.service';
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly usuarioService: UsuariosService,
     private readonly jwtService: JwtService,
+    private readonly mailerService: MailerService,
   ) {}
 
   async login(loginDto: LoginDto) {
@@ -71,19 +74,37 @@ export class AuthService {
       throw new UnauthorizedException('Usuário não encontrado');
     }
 
+    // Gera um token exclusivo
+    const resetToken = crypto.randomBytes(64).toString('hex');
+
+    // Salva o token no banco de dados associado ao usuário (ajuste para sua lógica)
+    await this.usuarioService.saveResetToken(user.id, resetToken);
+
+    // Gera o link de redefinição
+    const resetLink = `${process.env.APP_URL}/reset-password?token=${resetToken}`;
+
+    // Envia o e-mail de recuperação
+    await this.mailerService.sendResetPasswordEmail(
+      user.email,
+      user.nome,
+      resetLink,
+    );
+
     return { message: 'Instruções enviadas para o email' };
   }
 
   async resetPassword(resetPasswordDto: ResetPasswordDto) {
-    const user = await this.usuarioService.findByResetToken(
-      resetPasswordDto.token,
-    );
+    const { token, novaSenha } = resetPasswordDto;
+
+    const user = await this.usuarioService.findByResetToken(token);
     if (!user) {
-      throw new UnauthorizedException('Token inválido');
+      throw new UnauthorizedException('Token inválido ou expirado');
     }
 
-    const hashedPassword = await bcrypt.hash(resetPasswordDto.novaSenha, 10);
-    await this.usuarioService.updatePassword(user.id, hashedPassword);
-    return { message: 'Senha alterada com sucesso' };
+    user.senha = await bcrypt.hash(novaSenha, 10);
+    await this.usuarioService.updatePassword(user.id, user.senha);
+    await this.usuarioService.saveResetToken(user.id, '');
+
+    return { message: 'Senha redefinida com sucesso' };
   }
 }

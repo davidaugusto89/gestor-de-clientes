@@ -5,10 +5,10 @@ import { ConfigModule } from '@nestjs/config';
 import { AppController } from '@/app.controller';
 import { AppService } from '@/app.service';
 import { AppDataSource } from '@/database/config/dataSource';
-import { UsuariosModule } from './usuarios/usuarios.module';
-import { ClientesModule } from './clientes/clientes.module';
-import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
-import { AuthModule } from './auth/auth.module';
+import { UsuariosModule } from '@/usuarios/usuarios.module';
+import { ClientesModule } from '@/clientes/clientes.module';
+import { JwtAuthGuard } from '@/guards/jwt-auth.guard';
+import { AuthModule } from '@/auth/auth.module';
 
 @Module({
   imports: [

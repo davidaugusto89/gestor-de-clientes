@@ -1,7 +1,7 @@
 import { DataSource } from 'typeorm';
 import { hash } from 'bcrypt';
 import { UsuarioEntity } from '@/usuarios/entities/usuario.entity';
-import { UsuarioRole } from '@/usuarios/enums/roles.enum';
+import { UsuarioRole } from '@/enums/roles.enum';
 
 export default async (dataSource: DataSource) => {
   // Obtém o repositório padrão diretamente do DataSource

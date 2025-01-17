@@ -31,4 +31,14 @@ export class UsuariosService {
   async updatePassword(userId: bigint, newPassword: string): Promise<void> {
     await this.userRepository.update({ id: userId }, { senha: newPassword });
   }
+
+  async saveResetToken(userId: bigint, token: string): Promise<void> {
+    const user = await this.userRepository.findOne({ where: { id: userId } });
+    if (!user) {
+      throw new Error('Usuário não encontrado');
+    }
+
+    user.resetToken = token;
+    await this.userRepository.save(user);
+  }
 }

@@ -5,7 +5,7 @@ import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';
 import { ForgotPasswordDto } from './dto/forgot-password.dto';
 import { ResetPasswordDto } from './dto/reset-password.dto';
-import { Public } from './decorators/public.decorator';
+import { Public } from '@/decorators/public.decorator';
 
 @ApiTags('Auth')
 @Controller('auth')
