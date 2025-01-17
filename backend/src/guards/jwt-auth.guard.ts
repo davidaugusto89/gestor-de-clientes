@@ -5,6 +5,9 @@ import { IS_PUBLIC_KEY } from '../decorators/public.decorator';
 import { Observable } from 'rxjs';
 import { firstValueFrom } from 'rxjs';
 
+/**
+ * Guarda de autenticação JWT
+ */
 @Injectable()
 export class JwtAuthGuard extends AuthGuard('jwt') {
   constructor(private reflector: Reflector) {

@@ -8,6 +8,9 @@ import { Reflector } from '@nestjs/core';
 import { ROLES_KEY } from '../decorators/roles.decorator';
 import { UsuarioRole } from '@/enums/roles.enum';
 
+/**
+ * Guarda para verificar as roles de usuários
+ */
 @Injectable()
 export class RolesGuard implements CanActivate {
   constructor(private reflector: Reflector) {}
@@ -18,8 +21,9 @@ export class RolesGuard implements CanActivate {
       [context.getHandler(), context.getClass()],
     );
 
+    // Sem roles definidas, qualquer usuário autenticado pode acessar
     if (!requiredRoles) {
-      return true; // Sem roles definidas, qualquer usuário autenticado pode acessar
+      return true;
     }
 
     const { user } = context.switchToHttp().getRequest();

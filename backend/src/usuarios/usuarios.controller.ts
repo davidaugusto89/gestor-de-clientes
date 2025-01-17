@@ -18,6 +18,12 @@ import { UsuarioEntity } from './entities/usuario.entity';
 export class UsuariosController {
   constructor(private readonly usuariosService: UsuariosService) {}
 
+  /**
+   * Cria um novo usuário.
+   *
+   * @param createUsuarioDto - Dados parciais para criar um novo usuário
+   * @returns O usuário criado
+   */
   @ApiOperation({ summary: 'Cria um novo usuário' })
   @ApiResponse({
     status: 201,
@@ -31,6 +37,13 @@ export class UsuariosController {
     return this.usuariosService.createUsuario(createUsuarioDto);
   }
 
+  /**
+   * Busca um usuário pelo seu e-mail.
+   *
+   * @param email - E-mail do usuário a ser buscado
+   * @returns O usuário encontrado
+   * @throws {NotFoundException} Se o usuário não for encontrado
+   */
   @ApiOperation({ summary: 'Busca um usuário pelo email' })
   @ApiResponse({
     status: 200,
@@ -47,6 +60,13 @@ export class UsuariosController {
     return usuario;
   }
 
+  /**
+   * Busca um usuário pelo seu token de redefinição de senha.
+   *
+   * @param token - Token de redefinição de senha
+   * @returns O usuário encontrado
+   * @throws {NotFoundException} Se o token for inválido ou o usuário não encontrado
+   */
   @ApiOperation({
     summary: 'Busca um usuário pelo token de redefinição de senha',
   })
@@ -70,6 +90,13 @@ export class UsuariosController {
     return usuario;
   }
 
+  /**
+   * Atualiza a senha de um usuário.
+   *
+   * @param id - ID do usuário a ter a senha atualizada
+   * @param newPassword - Nova senha do usuário
+   * @throws {Error} Se a nova senha não for informada
+   */
   @ApiOperation({ summary: 'Atualiza a senha de um usuário' })
   @ApiResponse({ status: 200, description: 'Senha atualizada com sucesso.' })
   @ApiParam({ name: 'id', description: 'ID do usuário', type: String })

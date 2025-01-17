@@ -21,6 +21,12 @@ export class AuthService {
     private readonly mailerService: MailerService,
   ) {}
 
+  /**
+   * Autentica um usuário.
+   * @param loginDto - Dados de autenticação do usuário
+   * @throws {UnauthorizedException} se as credenciais forem inválidas
+   * @returns um token de acesso JWT com as informações do usuário
+   */
   async login(loginDto: LoginDto) {
     const user = await this.usuarioService.findByEmail(loginDto.email);
     if (!user || !(await bcrypt.compare(loginDto.senha, user.senha))) {
@@ -39,6 +45,13 @@ export class AuthService {
     };
   }
 
+  /**
+   * Registra um novo usuário.
+   *
+   * @param registerDto - Dados do novo usuário
+   * @throws {ConflictException} se o e-mail já estiver em uso
+   * @returns as informações do usuário criado e um token de acesso JWT
+   */
   async register(registerDto: RegisterDto) {
     const { email, senha } = registerDto;
 
@@ -68,6 +81,12 @@ export class AuthService {
     };
   }
 
+  /**
+   * Envia um e-mail de redefinição de senha para o usuário.
+   * @param forgotPasswordDto - Dados do usuário para redefinição de senha
+   * @throws {UnauthorizedException} se o usuário n o encontrado
+   * @returns uma mensagem de sucesso
+   */
   async forgotPassword(forgotPasswordDto: ForgotPasswordDto) {
     const user = await this.usuarioService.findByEmail(forgotPasswordDto.email);
     if (!user) {
@@ -93,6 +112,13 @@ export class AuthService {
     return { message: 'Instruções enviadas para o email' };
   }
 
+  /**
+   * Redefine a senha de um usuário.
+   *
+   * @param resetPasswordDto - Dados necessários para a redefinição da senha, incluindo o token de reset e a nova senha
+   * @throws {UnauthorizedException} se o token for inválido ou expirado
+   * @returns uma mensagem de sucesso indicando que a senha foi redefinida
+   */
   async resetPassword(resetPasswordDto: ResetPasswordDto) {
     const { token, novaSenha } = resetPasswordDto;
 

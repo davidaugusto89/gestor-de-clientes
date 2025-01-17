@@ -5,6 +5,11 @@ import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
+  /**
+   * Cria uma inst ncia da estrat gia de autentica o JWT.
+   *
+   * @param configService - Servi o respons vel por fornecer configura es do sistema.
+   */
   constructor(private readonly configService: ConfigService) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(), // Extrai o token do header
@@ -14,6 +19,12 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
+  /**
+   * Valida o token recebido e retorna o usu rio associado.
+   *
+   * @param payload - O payload do token JWT.
+   * @returns O usu rio autenticado.
+   */
   async validate(payload: any) {
     // Validação personalizada do token (ex.: verificar payload)
     return {
