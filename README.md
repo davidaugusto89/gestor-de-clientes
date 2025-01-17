@@ -70,10 +70,6 @@ npm run test
 ### Testes E2E
 Planejados para desenvolvimento futuro.
 
-## 🤝 Contribuição
-
-Sinta-se à vontade para abrir **issues** ou enviar **pull requests**. Toda contribuição é bem-vinda!
-
 ---
 
 **Autor:**
