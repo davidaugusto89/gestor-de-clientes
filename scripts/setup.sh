@@ -29,13 +29,13 @@ cd ..
 
 # Subir containers com Docker Compose
 echo "🐳 Subindo containers com Docker Compose..."
-docker-compose up -d
+docker-compose up -d --build
 
 # Aguardar o banco de dados estar pronto
 echo "⌛ Aguardando o banco de dados estar pronto..."
 
 # Loop para verificar se o MariaDB está aceitando conexões
-until docker exec qentregas-database mariadb --user=user --password=userpassword --host=database --port=3306 -e "SELECT 1" > /dev/null 2>&1; do
+until docker exec gestor-de-clientes-database mariadb --user=user --password=userpassword --host=database --port=3306 -e "SELECT 1" > /dev/null 2>&1; do
     echo "⏳ Esperando o banco de dados estar pronto..."
     sleep 5
 done
@@ -44,7 +44,7 @@ echo "✅ Banco de dados está pronto."
 
 # Rodar migrations e seeders
 echo "🔄 Rodando migrations e seeders..."
-docker exec -t qentregas-backend /bin/sh -c "npm run db:init"
+docker exec -t gestor-de-clientes-backend /bin/sh -c "npm run db:init"
 
 echo ""
 echo "🎉 Projeto configurado com sucesso!"

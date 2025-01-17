@@ -1,7 +1,6 @@
 <template>
   <div>
-    <h1>Login</h1>
-    <!-- Adicione aqui seu formulário de login -->
+    dashboard
   </div>
 </template>
 

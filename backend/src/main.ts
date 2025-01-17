@@ -9,6 +9,13 @@ async function bootstrap() {
   // Adicione um prefixo global para rotas, se necessário
   app.setGlobalPrefix('api');
 
+  // Habilita CORS
+  app.enableCors({
+    origin: ['http://localhost:5173', 'http://localhost'],
+    methods: 'GET,HEAD,POST,PUT,PATCH,DELETE,OPTIONS',
+    credentials: true,
+  });
+
   // Configura o pipe de validação global
   app.useGlobalPipes(
     new ValidationPipe({
@@ -20,9 +27,9 @@ async function bootstrap() {
 
   // Configuração do Swagger
   const config = new DocumentBuilder()
-    .setTitle('Documentação da API - QEntregas')
+    .setTitle('Documentação da API - Getor de Clientes ')
     .setDescription(
-      'Esta é a documentação da API para o projeto de exemplo da QEntregas. A API oferece endpoints para gerenciar clientes. Utiliza boas práticas de desenvolvimento, incluindo autenticação JWT e validação com DTOs.',
+      'Esta é a documentação da API para o projeto de exemplo Getor de Clientes. A API oferece endpoints para gerenciar clientes. Utiliza boas práticas de desenvolvimento, incluindo autenticação JWT e validação com DTOs.',
     )
     .setVersion('1.0')
     .addBearerAuth(

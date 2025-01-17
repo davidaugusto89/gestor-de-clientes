@@ -1,31 +1,29 @@
-<!-- src/layouts/LayoutAutenticacao.vue -->
 <template>
-  <div class="auth-container">
-    <main class="auth-content">
-      <slot></slot> <!-- Aqui vai o conteúdo das páginas de autenticação -->
-    </main>
+  <div class="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-indigo-600 px-4">
+    <div class="auth-container bg-white p-8 rounded-lg shadow-lg w-full sm:max-w-md md:max-w-lg">
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-// Lógica para o layout de autenticação, se necessário
 </script>
 
 <style scoped>
 .auth-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f5f5f5;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
-.auth-content {
-  background-color: white;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
+/* Animação de fade-in */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 </style>

@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   nginx:
-    container_name: qentregas-nginx
+    container_name: gestor-de-clientes-nginx
     image: nginx:latest
     ports:
       - "80:80"
@@ -13,7 +13,7 @@ services:
       - frontend
 
   backend:
-    container_name: qentregas-backend
+    container_name: gestor-de-clientes-backend
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -26,7 +26,7 @@ services:
     command: npm run start:dev
 
   frontend:
-    container_name: qentregas-frontend
+    container_name: gestor-de-clientes-frontend
     build:
       context: ./frontend
       dockerfile: Dockerfile
@@ -39,7 +39,7 @@ services:
     command: npm run dev
 
   database:
-    container_name: qentregas-database
+    container_name: gestor-de-clientes-database
     image: mariadb:latest
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
@@ -52,7 +52,7 @@ services:
       - "3306:3306"
 
   phpmyadmin:
-    container_name: qentregas-phpmyadmin
+    container_name: gestor-de-clientes-phpmyadmin
     image: phpmyadmin/phpmyadmin
     environment:
        PMA_HOST: database
@@ -63,7 +63,7 @@ services:
       - "8081:80"
 
   mailhog:
-    container_name: qentregas-mailhog
+    container_name: gestor-de-clientes-mailhog
     image: mailhog/mailhog
     ports:
       - "1025:1025"

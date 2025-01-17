@@ -1,7 +1,7 @@
-# Projeto Fullstack com NestJS e VueJS | QEntregas 🚀
+# Getor de Clientes com NestJS e VueJS 🚀
 
 
-Este é um projeto fullstack que utiliza **NestJS** para o backend e **VueJS** com **Vite** para o frontend. O projeto está configurado com Docker para simplificar o desenvolvimento e a execução. Abaixo, você encontrará todas as informações necessárias para entender, instalar e executar o projeto.
+Este é um Getor de Clientes que utiliza **NestJS** para o backend e **VueJS** com **Vite** para o frontend. O projeto está configurado com Docker para simplificar o desenvolvimento e a execução. Abaixo, você encontrará todas as informações necessárias para entender, instalar e executar o projeto.
 
 ## 🛠 Tecnologias Utilizadas
 
@@ -29,8 +29,8 @@ Este é um projeto fullstack que utiliza **NestJS** para o backend e **VueJS** c
 ### Passos para Configuração
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/davidaugusto89/qentregas.git
-   cd qentregas
+   git clone https://github.com/davidaugusto89/gestor-de-clientes.git
+   cd gestor-de-clientes
    ```
 
 2. Execute o script de setup:

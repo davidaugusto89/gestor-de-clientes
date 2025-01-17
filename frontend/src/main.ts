@@ -1,15 +1,28 @@
-import './assets/main.css'
-import './assets/styles/tailwind.css'
+import './assets/main.css';
 
-import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+import { createApp } from 'vue';
+import { createPinia } from 'pinia';
 
-import App from './App.vue'
-import router from './router'
+import App from './App.vue';
+import router from './router';
 
-const app = createApp(App)
+const app = createApp(App);
 
-app.use(createPinia())
-app.use(router)
+// Registrar todos os componentes globalmente com tipagem correta
+const globalComponents = import.meta.glob('./components/global/*.vue', { eager: true }) as Record<
+  string,
+  { default: object }
+>;
 
-app.mount('#app')
+Object.entries(globalComponents).forEach(([path, definition]) => {
+  const componentName = path
+    .split('/')
+    .pop()
+    ?.replace(/\.\w+$/, '') as string;
+  app.component(componentName, definition.default);
+});
+
+app.use(createPinia());
+app.use(router);
+
+app.mount('#app');
