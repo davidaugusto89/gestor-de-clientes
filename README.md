@@ -36,10 +36,10 @@ Este é um Gestor de Clientes que utiliza **NestJS** para o backend e **VueJS** 
 
 ## 🧩 Decisões de Arquitetura
 
-**Backend Modular**: Estruturado em módulos independentes como Clientes, Usuários e Auth, para maior organização e manutenibilidade.
-**Padrão Service**: Facilitando a criação de testes e o reaproveitamento de lógica.
-**Frontend Escalável**: Separação clara entre estado, componentes e rotas, promovendo extensibilidade.
-**Infraestrutura Simplificada**: Configuração via Docker para garantir consistência no ambiente de desenvolvimento.
+- **Backend Modular**: Estruturado em módulos independentes como Clientes, Usuários e Auth, para maior organização e manutenibilidade.
+- **Padrão Service**: Facilitando a criação de testes e o reaproveitamento de lógica.
+- **Frontend Escalável**: Separação clara entre estado, componentes e rotas, promovendo extensibilidade.
+- **Infraestrutura Simplificada**: Configuração via Docker para garantir consistência no ambiente de desenvolvimento.
 
 ---
 
