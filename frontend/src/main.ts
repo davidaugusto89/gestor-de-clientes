@@ -6,18 +6,9 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
-import Vue3Toastify, { type ToastContainerOptions } from 'vue3-toastify'
-
 import VMoney from 'v-money3';
 
 const app = createApp(App)
-
-// Registrar o componente Toast globalmente
-app.use(Vue3Toastify, {
-  newestOnTop: true,
-  position: 'top-right',
-  transition: 'slide',
-} as ToastContainerOptions)
 
 app.use(VMoney, {
   precision: 2,
