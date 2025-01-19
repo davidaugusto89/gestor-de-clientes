@@ -6,9 +6,20 @@
     </label>
 
     <div class="relative">
+      <!-- Campo de dinheiro -->
+       <input
+        v-if="type === 'money'"
+        ref="inputRef"
+        :id="id"
+        v-model="internalValue"
+        v-money3="moneyOptions"
+        :class="inputClasses"
+        :aria-invalid="errorMessage ? 'true' : 'false'"
+      />
+
       <!-- Campo padrão sem máscara -->
       <input
-        v-if="!formatType"
+        v-else-if="!formatType"
         ref="inputRef"
         :id="id"
         v-model="internalValue"
@@ -57,7 +68,7 @@
     height: { type: String, default: '10' },
     maxLength: { type: Number, default: 250 },
     modelValue: { type: String, required: true },
-    formatType: { type: String, default: '' }, // 'currency', 'cpfCnpj', 'telefone', etc.
+    formatType: { type: String, default: '' }, //'cpfCnpj', 'telefone', 'cep'
   })
 
   // Emitir eventos
@@ -87,6 +98,10 @@
 
   watch(internalValue, (newValue) => {
     // Apenas limpa o valor se a máscara estiver ativa
+    if (props.type === 'money') {
+      newValue = Number(newValue.replace(/[^0-9]/g, ''))
+    }
+
     emits('update:modelValue', newValue)
   })
 
@@ -108,6 +123,16 @@
         return ''
     }
   })
+
+  // Mascara money
+// Opções para v-money
+const moneyOptions = {
+  prefix: 'R$ ',
+  suffix: '',
+  thousands: '.',
+  decimal: ',',
+  precision: 2,
+};
 
   // Função para limpar valores mascarados
   const cleanValue = (value: string) => value.replace(/[^0-9]/g, '')

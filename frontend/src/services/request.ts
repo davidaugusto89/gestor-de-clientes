@@ -47,7 +47,18 @@ const request = {
    * @throws {any} - Repropaga o erro lan ado pela requisi o.
    */
   put: async (url: string, data?: object) => {
-    return api.put(url, data)
+    try {
+      const response = await api.put(url, data)
+
+      // Verifica o status da resposta
+      await checkStatus(response.status, response?.data?.message || '')
+
+      return response
+    } catch (error: any) {
+      // Trata o erro de requisição, como falha de rede ou erro de resposta
+      handleRequestError(error)
+      throw error // Repropaga o erro para o `handleLogin` lidar
+    }
   },
   /**
    * Envia uma requisi o PATCH para a URL informada.
@@ -59,7 +70,18 @@ const request = {
    * @throws {any} - Repropaga o erro lan ado pela requisi o.
    */
   patch: async (url: string, data?: object) => {
-    return api.patch(url, data)
+    try {
+      const response = await api.patch(url, data)
+
+      // Verifica o status da resposta
+      await checkStatus(response.status, response?.data?.message || '')
+
+      return response
+    } catch (error: any) {
+      // Trata o erro de requisição, como falha de rede ou erro de resposta
+      handleRequestError(error)
+      throw error // Repropaga o erro para o `handleLogin` lidar
+    }
   },
   /**
    * Envia uma requisi o DELETE para a URL informada.

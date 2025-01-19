@@ -8,6 +8,8 @@ import router from './router'
 
 import Vue3Toastify, { type ToastContainerOptions } from 'vue3-toastify'
 
+import VMoney from 'v-money3';
+
 const app = createApp(App)
 
 // Registrar o componente Toast globalmente
@@ -16,6 +18,14 @@ app.use(Vue3Toastify, {
   position: 'top-right',
   transition: 'slide',
 } as ToastContainerOptions)
+
+app.use(VMoney, {
+  precision: 2,
+  prefix: 'R$ ',
+  thousands: '.',
+  decimal: ',',
+  locale: 'pt-BR',
+})
 
 // Habilitar warnings no console
 app.config.errorHandler = (err) => {

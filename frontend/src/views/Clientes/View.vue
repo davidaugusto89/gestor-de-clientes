@@ -111,93 +111,93 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
-import request from '@/services/request';
+  import { ref, computed, onMounted } from 'vue'
+  import { useRoute } from 'vue-router'
+  import request from '@/services/request'
 
-// Funções personalizadas para formatação
-const formatCpfCnpj = (value: string) => {
-  if (!value) return '';
-  return value.length <= 11
-    ? value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4') // CPF
-    : value.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5'); // CNPJ
-};
+  // Funções personalizadas para formatação
+  const formatCpfCnpj = (value: string) => {
+    if (!value) return ''
+    return value.length <= 11
+      ? value.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4') // CPF
+      : value.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/, '$1.$2.$3/$4-$5') // CNPJ
+  }
 
-const formatCep = (value: string) => {
-  if (!value) return '';
-  return value.replace(/(\d{5})(\d{3})/, '$1-$2'); // CEP
-};
+  const formatCep = (value: string) => {
+    if (!value) return ''
+    return value.replace(/(\d{5})(\d{3})/, '$1-$2') // CEP
+  }
 
-const formatPhone = (value: string) => {
-  if (!value) return '';
-  return value.length === 10
-    ? value.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3') // Telefone fixo
-    : value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3'); // Celular
-};
+  const formatPhone = (value: string) => {
+    if (!value) return ''
+    return value.length === 10
+      ? value.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3') // Telefone fixo
+      : value.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3') // Celular
+  }
 
-const formatCurrency = (value: number) => {
-  if (!value) return '';
-  return new Intl.NumberFormat('pt-BR', {
-    style: 'currency',
-    currency: 'BRL',
-  }).format(value); // Moeda brasileira
-};
+  const formatCurrency = (value: number) => {
+    if (!value) return ''
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+    }).format(value) // Moeda brasileira
+  }
 
-const formatDate = (value: string) => {
-  if (!value) return '';
-  const date = new Date(value);
-  return date.toLocaleDateString('pt-BR'); // Formato brasileiro de data
-};
+  const formatDate = (value: string) => {
+    if (!value) return ''
+    const date = new Date(value)
+    return date.toLocaleDateString('pt-BR') // Formato brasileiro de data
+  }
 
-// Computed para obter o ID do cliente
-const route = useRoute();
-const clienteId = computed(() => route.params.id as string | null);
+  // Computed para obter o ID do cliente
+  const route = useRoute()
+  const clienteId = computed(() => route.params.id as string | null)
 
-const isLoading = ref(false);
-const data = ref<any>({});
+  const isLoading = ref(false)
+  const data = ref<any>({})
 
-// Computed properties para os dados formatados
-const formattedCpfCnpj = computed(() => formatCpfCnpj(data.value.cpfCnpj));
-const formattedCep = computed(() => formatCep(data.value.cep));
-const formattedPhone = computed(() => formatPhone(data.value.fone));
-const formattedCreditLimit = computed(() =>
-  formatCurrency(data.value.limiteCredito)
-);
-const formattedValidity = computed(() => formatDate(data.value.validade));
+  // Computed properties para os dados formatados
+  const formattedCpfCnpj = computed(() => formatCpfCnpj(data.value.cpfCnpj))
+  const formattedCep = computed(() => formatCep(data.value.cep))
+  const formattedPhone = computed(() => formatPhone(data.value.fone))
+  const formattedCreditLimit = computed(() =>
+    formatCurrency(data.value.limiteCredito)
+  )
+  const formattedValidity = computed(() => formatDate(data.value.validade))
 
-// Função para carregar os dados do cliente
-const loadInfo = async () => {
-  try {
-    isLoading.value = true;
-    const response = await request.get(`/clientes/${clienteId.value}`);
+  // Função para carregar os dados do cliente
+  const loadInfo = async () => {
+    try {
+      isLoading.value = true
+      const response = await request.get(`/clientes/${clienteId.value}`)
 
-    if (response.status === 200) {
-      data.value = response.data;
+      if (response.status === 200) {
+        data.value = response.data
+      }
+    } catch (error) {
+      console.error('Erro ao carregar os dados do cliente:', error)
+    } finally {
+      setTimeout(() => {
+        isLoading.value = false
+      }, 500)
     }
-  } catch (error) {
-    console.error('Erro ao carregar os dados do cliente:', error);
-  } finally {
-    setTimeout(() => {
-      isLoading.value = false;
-    }, 500);
   }
-};
 
-// Chamada inicial para carregar os dados do cliente
-onMounted(() => {
-  if (clienteId.value) {
-    loadInfo();
-  }
-});
+  // Chamada inicial para carregar os dados do cliente
+  onMounted(() => {
+    if (clienteId.value) {
+      loadInfo()
+    }
+  })
 </script>
 
 <style scoped>
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
   }
-  to {
-    transform: rotate(360deg);
-  }
-}
 </style>

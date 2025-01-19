@@ -134,14 +134,13 @@
           />
 
           <Input
-            type="text"
+            type="money"
             id="limiteCredito"
             v-model="limiteCredito"
             required
             placeholder="Limite de Crédito"
             label="Limite de Crédito"
             :error-message="errors?.limiteCredito"
-            format-type="currency"
           />
 
           <Input
@@ -208,7 +207,7 @@
   const uf = ref('')
   const complemento = ref('')
   const fone = ref('')
-  const limiteCredito = ref(null)
+  const limiteCredito = ref(0)
   const validade = ref('')
 
   const handleFormSubmit = async () => {
@@ -265,7 +264,7 @@
       fone: fone.value,
       limiteCredito: Number(limiteCredito.value),
       validade: validade.value,
-    }
+    };
 
     try {
       const response = clienteId.value
@@ -309,7 +308,7 @@
         codigo.value = data.codigo
         nome.value = data.nome
         cpfCnpj.value = data.cpfCnpj
-        cep.value = '13076-580' //data.cep.toString()
+        cep.value = data.cep.toString()
         logradouro.value = data.logradouro
         endereco.value = data.endereco
         numero.value = data.numero
