@@ -3,6 +3,8 @@
 
 Este é um Gestor de Clientes que utiliza **NestJS** para o backend e **VueJS** com **Vite** para o frontend. O projeto está configurado com Docker para simplificar o desenvolvimento e a execução. Abaixo, você encontrará todas as informações necessárias para entender, instalar e executar o projeto.
 
+---
+
 ## 🛠 Tecnologias Utilizadas
 
 ### Backend
@@ -20,6 +22,8 @@ Este é um Gestor de Clientes que utiliza **NestJS** para o backend e **VueJS** 
 - **PhpMyAdmin**: Gerenciamento visual do banco.
 - **Mailhog**: SMTP local
 - **Nginx**: Proxy reverso para backend e frontend.
+
+---
 
 ## 🚀 Como Executar o Projeto
 
@@ -54,13 +58,16 @@ Este é um Gestor de Clientes que utiliza **NestJS** para o backend e **VueJS** 
    - **Mailhog**: [http://localhost:8025](http://localhost:8025)
    - **PhpMyAdmin:** [http://localhost:8081](http://localhost:8081)
 
+---
+
 ## 📝 Documentação da API
 
 A API está documentada com **Swagger**. Após iniciar o backend, acesse:
 [http://localhost/api/docs](http://localhost/api/docs)
 
+---
 
-## Estrutura de Pastas
+## 🗂️ Estrutura de Pastas
 
 Abaixo está a estrutura do projeto com explicação das principais pastas:
 ```bash
@@ -173,6 +180,7 @@ Os testes serão implementados com **Jest** no backend. Para executar:
 cd backend
 npm run test
 
+---
 
 **Autor:**
 [David Augusto](https://github.com/davidaugusto89/)
