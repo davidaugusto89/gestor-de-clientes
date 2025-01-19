@@ -18,6 +18,7 @@ Este é um Gestor de Clientes que utiliza **NestJS** para o backend e **VueJS** 
 - **Docker**:
 - **MariaDB**: Banco de dados relacional.
 - **PhpMyAdmin**: Gerenciamento visual do banco.
+- **Mailhog**: SMTP local
 - **Nginx**: Proxy reverso para backend e frontend.
 
 ## 🚀 Como Executar o Projeto
@@ -50,6 +51,7 @@ Este é um Gestor de Clientes que utiliza **NestJS** para o backend e **VueJS** 
    - **Frontend sem proxy reverso:** [http://localhost:5173](http://localhost:5173)
    - **Backend via proxy reverso:** [http://localhost/api](http://localhost/api)
    - **Backend sem proxy reverso:** [http://localhost:3000/api](http://localhost:3000/api)
+   - **Mailhog**: [http://localhost:8025](http://localhost:8025)
    - **PhpMyAdmin:** [http://localhost:8081](http://localhost:8081)
 
 ## 📝 Documentação da API
