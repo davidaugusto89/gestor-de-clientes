@@ -1,7 +1,7 @@
 # Getor de Clientes com NestJS e VueJS 🚀
 
 
-Este é um Getor de Clientes que utiliza **NestJS** para o backend e **VueJS** com **Vite** para o frontend. O projeto está configurado com Docker para simplificar o desenvolvimento e a execução. Abaixo, você encontrará todas as informações necessárias para entender, instalar e executar o projeto.
+Este é um Gestor de Clientes que utiliza **NestJS** para o backend e **VueJS** com **Vite** para o frontend. O projeto está configurado com Docker para simplificar o desenvolvimento e a execução. Abaixo, você encontrará todas as informações necessárias para entender, instalar e executar o projeto.
 
 ## 🛠 Tecnologias Utilizadas
 
@@ -64,9 +64,6 @@ A API está documentada com **Swagger**. Após iniciar o backend, acesse:
 Os testes serão implementados com **Jest** no backend. Para executar:
 cd backend
 npm run test
-
-### Testes E2E
-Planejados para desenvolvimento futuro.
 
 ---
 

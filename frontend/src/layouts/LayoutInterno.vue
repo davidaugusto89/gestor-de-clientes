@@ -5,8 +5,8 @@
       class="w-60 bg-gradient-to-b from-[#150F3E] to-[#322E50] text-white flex flex-col shadow-lg"
     >
       <!-- Logo -->
-      <div class="flex items-center justify-center h-20 bg-[#1F1B3A]">
-        <h1 class="text-xl font-bold">Logotipo</h1>
+      <div class="flex items-center justify-center">
+        <img src="/logotipo_white.png" alt="Logo" class="w-[150px] my-[2rem]" />
       </div>
 
       <!-- Navegação -->

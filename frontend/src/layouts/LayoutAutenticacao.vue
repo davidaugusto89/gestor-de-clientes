@@ -5,8 +5,7 @@
       class="hidden md:flex flex-col justify-center items-center w-1/2 bg-gradient-to-br from-[#150F3E] to-[#322E50] text-white p-8"
     >
       <div class="text-center">
-        <h1 class="text-4xl font-bold mb-4">Logotipo</h1>
-        <p class="text-lg">Slogan da empresa</p>
+        <img src="/logotipo_white.png" alt="Logo" class="w-[400px]" />
       </div>
       <div class="mt-8"></div>
     </div>
