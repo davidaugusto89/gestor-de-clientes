@@ -63,7 +63,7 @@ A API está documentada com **Swagger**. Após iniciar o backend, acesse:
 ## Estrutura de Pastas
 
 Abaixo está a estrutura do projeto com explicação das principais pastas:
-```
+```bash
 ├── backend
 │   ├── src
 │   │   ├── auth
