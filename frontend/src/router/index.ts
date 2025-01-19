@@ -1,65 +1,73 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore } from '@/stores/authStore'
+//-Layout
 import LayoutAutenticacao from '@/layouts/LayoutAutenticacao.vue'
 import LayoutInterno from '@/layouts/LayoutInterno.vue'
-import LoginPage from '@/views/LoginPage.vue'
-import DashboardPage from '@/views/DashboardPage.vue'
-import ClientesList from '@/views/ClientesList.vue'
-import ClienteForm from '@/views/ClienteForm.vue'
-import UsuariosList from '@/views/UsuariosList.vue'
-import UsuarioForm from '@/views/UsuarioForm.vue'
-import ResetPasswordPage from '@/views/ResetPasswordPage.vue'
-import RegisterPage from '@/views/RegisterPage.vue'
-import ForgotPasswordPage from '@/views/ForgotPasswordPage.vue'
+
+//--Paginas externas relacionadas a login
+import LoginPage from '@/views/Login/Login.vue'
+import ResetPassword from '@/views/Login/ResetPassword.vue'
+import Register from '@/views/Login/Register.vue'
+import ForgotPassword from '@/views/Login/ForgotPassword.vue'
+
+//--Paginas internas
+//---Dashboard
+import Dashboard from '@/views/Dashboard/Dashboard.vue'
+
+//---Clientes
+import ClientesList from '@/views/Clientes/List.vue'
+import ClienteForm from '@/views/Clientes/Form.vue'
+import ClienteView from '@/views/Clientes/View.vue'
+
+//---Usuarios
+import UsuariosList from '@/views/Usuarios/List.vue'
+
+//Página 404
 import NotFoundPage from '@/views/NotFoundPage.vue'
 
 const routes = [
   {
     path: '/login',
     component: LayoutAutenticacao,
-    name: 'Login',
     children: [
       {
         path: '',
         component: LoginPage,
-        name: 'LoginPage',
+        name: 'Login',
       },
     ],
-    redirect: { name: 'LoginPage' },
+    redirect: { name: 'Login' },
   },
   {
     path: '/register',
     component: LayoutAutenticacao,
-    name: 'Register',
     children: [
       {
         path: '',
-        component: RegisterPage,
-        name: 'RegisterPage',
+        component: Register,
+        name: 'Register',
       },
     ],
   },
   {
     path: '/forgot-password',
     component: LayoutAutenticacao,
-    name: 'ForgotPassword',
     children: [
       {
         path: '',
-        component: ForgotPasswordPage,
-        name: 'ForgotPasswordPage',
+        component: ForgotPassword,
+        name: 'ForgotPassword',
       },
     ],
   },
   {
     path: '/reset-password',
     component: LayoutAutenticacao,
-    name: 'ResetPassword',
     children: [
       {
         path: '',
-        component: ResetPasswordPage,
-        name: 'ResetPasswordPage',
+        component: ResetPassword,
+        name: 'ResetPassword',
       },
     ],
   },
@@ -81,7 +89,7 @@ const routes = [
     children: [
       {
         path: '/dashboard',
-        component: DashboardPage,
+        component: Dashboard,
         name: 'Dashboard',
         meta: { requiresAuth: true },
       },
@@ -98,6 +106,12 @@ const routes = [
         meta: { requiresAuth: true },
       },
       {
+        path: 'clientes/visualizar/:id',
+        component: ClienteView,
+        name: 'ClientesVisualizar',
+        meta: { requiresAuth: true },
+      },
+      {
         path: 'clientes/editar/:id',
         component: ClienteForm,
         name: 'EditClient',
@@ -107,18 +121,6 @@ const routes = [
         path: 'usuarios',
         component: UsuariosList,
         name: 'UsuariosList',
-        meta: { requiresAuth: true },
-      },
-      {
-        path: 'usuarios/novo',
-        component: UsuarioForm,
-        name: 'NovoUsuario',
-        meta: { requiresAuth: true },
-      },
-      {
-        path: 'usuarios/editar/:id',
-        component: UsuarioForm,
-        name: 'EditUsuario',
         meta: { requiresAuth: true },
       },
     ],

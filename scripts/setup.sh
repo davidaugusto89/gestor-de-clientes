@@ -28,7 +28,7 @@ fi
 cd ..
 
 # 📦 Instalar dependências no backend
-echo "📦 Instalando dependências no backend..,"
+echo "📦 Instalando dependências no backend..."
 cd backend
 npm install
 cd ..
@@ -57,6 +57,10 @@ echo "✅ Banco de dados está pronto."
 # Rodar migrations e seeders
 echo "🔄 Rodando migrations e seeders..."
 docker exec -t gestor-de-clientes-backend /bin/sh -c "npm run db:init"
+
+#Copiando templates de email backend...
+echo "📄 Copiando templates de email backend..."
+docker exec -t gestor-de-clientes-backend /bin/sh -c "cp -R /app/src/templates /app/dist/templates"
 
 echo ""
 echo "🎉 Projeto configurado com sucesso!"

@@ -14,6 +14,7 @@ enum DatabaseType {
   MSSQL = 'mssql',
 }
 
+// Crie o objeto de DataSource
 export const AppDataSource = new DataSource({
   type: (process.env.DB_TYPE as DatabaseType) || DatabaseType.MARIADB,
   host: process.env.DB_HOST || 'database',
@@ -26,3 +27,15 @@ export const AppDataSource = new DataSource({
   synchronize: false,
   logging: process.env.NODE_ENV !== 'production',
 });
+
+// Função que tenta se conectar e, em caso de erro, aguarda alguns segundos e tenta de novo.
+export async function initializeDatabaseWithRetry(retryDelay = 5000) {
+  try {
+    await AppDataSource.initialize();
+    console.log('Conexão com o banco de dados estabelecida com sucesso!');
+  } catch (error) {
+    console.error('Erro ao conectar no banco de dados:', error);
+    console.log(`Tentando reconexão em ${retryDelay / 1000} segundos...`);
+    setTimeout(() => initializeDatabaseWithRetry(retryDelay), retryDelay);
+  }
+}

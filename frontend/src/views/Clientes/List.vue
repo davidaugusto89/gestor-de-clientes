@@ -16,6 +16,7 @@
       :data="clientes"
       :advanced-filter="true"
       :is-loading="isLoading"
+      :show-link="'/clientes/visualizar/'"
       :edit-link="'/clientes/editar/'"
       :delete-link="'/clientes/'"
     />

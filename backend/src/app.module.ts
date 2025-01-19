@@ -19,8 +19,12 @@ import { AuthModule } from '@/auth/auth.module';
     TypeOrmModule.forRootAsync({
       useFactory: async () => {
         if (!AppDataSource.isInitialized) {
-          await AppDataSource.initialize();
-          console.log('🚀 DataSource inicializado com sucesso!');
+          try {
+            await AppDataSource.initialize();
+            console.log('🚀 DataSource inicializado com sucesso!');
+          } catch (error) {
+            console.error('Erro ao inicializar o DataSource:', error);
+          }
         }
         return AppDataSource.options;
       },

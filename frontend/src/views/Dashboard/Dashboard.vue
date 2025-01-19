@@ -2,7 +2,7 @@
   <div>
     <div class="p-6 space-y-6">
       <!-- Título da Dashboard -->
-      <h1 class="text-2xl font-bold text-gray-800">Dashboard</h1>
+      <Header title="Dashboard (exemplo)" />
 
       <!-- Indicadores -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">

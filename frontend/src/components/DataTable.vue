@@ -73,7 +73,13 @@
             {{ item[column.key] }}
           </td>
           <td class="px-6 py-4 gap-2 flex w-[150px]" v-if="showActions">
-            <Button type="info" width="small" icon="visibility" v-if="showLink">
+            <Button
+              type="info"
+              width="small"
+              icon="visibility"
+              :redirect-to="showLink + item.id"
+              v-if="showLink"
+            >
               Visualizar
             </Button>
             <Button

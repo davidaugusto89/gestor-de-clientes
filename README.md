@@ -55,10 +55,8 @@ Este é um Getor de Clientes que utiliza **NestJS** para o backend e **VueJS** c
 ## 📝 Documentação da API
 
 A API está documentada com **Swagger**. Após iniciar o backend, acesse:
-[http://localhost/api](http://localhost/api)
+[http://localhost/api/docs](http://localhost/api/docs)
 
-### Importar no Insomnia
-Você pode importar o arquivo disponível em `docs/insomnia.json` para o **Insomnia** e começar a testar a API.
 
 ## 🧪 Testes
 

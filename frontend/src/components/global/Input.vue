@@ -4,6 +4,7 @@
       <span :class="error ? 'text-red-500' : ''">{{ label }}</span>
       <span v-if="required" class="text-red-500">*</span>
     </label>
+
     <div class="relative">
       <!-- Campo padrão sem máscara -->
       <input

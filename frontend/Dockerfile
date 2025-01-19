@@ -4,17 +4,20 @@ FROM node:latest
 # Defina o diretório de trabalho dentro do container
 WORKDIR /app
 
-# Copie os arquivos de configuração de dependências
+# Copie os arquivos de dependência para o container
 COPY package.json package-lock.json ./
 
-# Instale as dependências do projeto com npm
+# Antes de instalar as dependências, remova caches antigos (opcional)
+RUN npm cache clean --force
+
+# Instale as dependências do projeto
 RUN npm install
 
-# Copie todos os arquivos do projeto para o diretório de trabalho
+# Copie os arquivos do projeto para o container
 COPY . .
 
-# Exponha a porta 5173 (usada pelo Vite)
+# Exponha a porta utilizada pelo Vite
 EXPOSE 5173
 
-# Comando padrão para iniciar o servidor de desenvolvimento
+# Comando para rodar o servidor de desenvolvimento
 CMD ["npm", "run", "dev"]

@@ -1,18 +1,10 @@
 <template>
   <div class="relative overflow-x-auto sm:rounded-lg">
-    <div class="flex items-center justify-between pb-4">
-      <!-- Título alinhado à esquerda -->
-      <h2 class="text-2xl font-bold text-gray-900 flex items-center space-x-2">
-        <Link to="/clientes" class="hover:underline">Clientes</Link>
-        <i class="material-icons">keyboard_arrow_right</i>
-        <span>{{ title }}</span>
-      </h2>
-
-      <!-- Botão alinhado à direita -->
-      <Button type="outline" width="small" redirect-to="/clientes">
-        Cancelar
-      </Button>
-    </div>
+    <Header
+      :title="title"
+      :title-previous="'Clientes'"
+      :route-back="'/clientes'"
+    />
 
     <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
       <form @submit.prevent="handleFormSubmit" class="space-y-6">
