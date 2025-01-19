@@ -27,9 +27,9 @@ async function bootstrap() {
 
   // Configuração do Swagger
   const config = new DocumentBuilder()
-    .setTitle('Documentação da API - Getor de Clientes ')
+    .setTitle('Documentação da API - Gestor de Clientes ')
     .setDescription(
-      'Esta é a documentação da API para o projeto de exemplo Getor de Clientes. A API oferece endpoints para gerenciar clientes. Utiliza boas práticas de desenvolvimento, incluindo autenticação JWT e validação com DTOs.',
+      'Esta é a documentação da API para o projeto de exemplo Gestor de Clientes. A API oferece endpoints para gerenciar clientes. Utiliza boas práticas de desenvolvimento, incluindo autenticação JWT e validação com DTOs.',
     )
     .setVersion('1.0')
     .addBearerAuth(

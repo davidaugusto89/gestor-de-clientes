@@ -1,4 +1,4 @@
-# Getor de Clientes com NestJS e VueJS 🚀
+# Gestor de Clientes com NestJS e VueJS 🚀
 
 
 Este é um Gestor de Clientes que utiliza **NestJS** para o backend e **VueJS** com **Vite** para o frontend. O projeto está configurado com Docker para simplificar o desenvolvimento e a execução. Abaixo, você encontrará todas as informações necessárias para entender, instalar e executar o projeto.
