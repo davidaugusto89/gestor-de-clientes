@@ -24,6 +24,7 @@ services:
     volumes:
       - ./backend:/app
     command: npm run start:dev
+    restart: always
 
   frontend:
     container_name: gestor-de-clientes-frontend

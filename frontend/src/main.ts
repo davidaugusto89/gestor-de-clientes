@@ -6,14 +6,9 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
-import { MaskInput } from 'vue-3-mask'
-
 import Vue3Toastify, { type ToastContainerOptions } from 'vue3-toastify'
 
 const app = createApp(App)
-
-// Registrar o componente MaskInput globalmente
-app.component('MaskInput', MaskInput)
 
 // Registrar o componente Toast globalmente
 app.use(Vue3Toastify, {

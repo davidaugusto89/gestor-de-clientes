@@ -12,6 +12,7 @@
     <form @submit.prevent="handleLogin" class="space-y-6">
       <!-- Campo de Email -->
       <Row>
+        email => {{ email }}
         <Input
           type="text"
           id="email"
@@ -25,6 +26,7 @@
 
       <!-- Campo de Senha -->
       <Row>
+        senha => {{ senha }}
         <Input
           type="password"
           id="password"
@@ -85,6 +87,10 @@
   // Função de login
   const handleLogin = async () => {
     isLoading.value = true
+
+    // Limpa os erros
+    errors.value = {}
+
     // Validações finais antes do envio
     validate('email', email.value, {
       required: true,

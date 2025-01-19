@@ -2,7 +2,11 @@
   <div class="relative overflow-x-auto sm:rounded-lg">
     <div class="flex items-center justify-between pb-4">
       <!-- Título alinhado à esquerda -->
-      <h2 class="text-2xl font-bold text-gray-900">{{ title }}</h2>
+      <h2 class="text-2xl font-bold text-gray-900 flex items-center space-x-2">
+        <Link to="/clientes" class="hover:underline">Clientes</Link>
+        <i class="material-icons">keyboard_arrow_right</i>
+        <span>{{ title }}</span>
+      </h2>
 
       <!-- Botão alinhado à direita -->
       <Button type="outline" width="small" redirect-to="/clientes">
@@ -40,7 +44,8 @@
             placeholder="CPF/CNPJ"
             label="CPF/CNPJ"
             :error-message="errors?.cpfCnpj"
-            :mask="cpfCnpjMask"
+            :max-length="18"
+            format-type="cpfCnpj"
           />
         </div>
 
@@ -55,8 +60,9 @@
             label="CEP"
             :error-message="errors?.cep"
             :max-length="9"
-            :mask="'#####-###'"
+            format-type="cep"
             @change="onCepInput"
+            @blur="onCepInput"
           />
 
           <Input
@@ -86,7 +92,7 @@
             label="Número"
             :error-message="errors?.numero"
             :max-length="20"
-            :mask="'####################'"
+            format-type="number"
           />
         </div>
 
@@ -131,19 +137,21 @@
             placeholder="Telefone"
             label="Telefone"
             :error-message="errors?.fone"
-            :mask="telefoneCelularMask"
-            :max-length="15"
+            :max-length="16"
+            format-type="telefone"
           />
 
           <Input
-            type="number"
+            type="text"
             id="limiteCredito"
             v-model="limiteCredito"
             required
             placeholder="Limite de Crédito"
             label="Limite de Crédito"
             :error-message="errors?.limiteCredito"
+            format-type="currency"
           />
+
           <Input
             type="date"
             id="validade"
@@ -211,16 +219,6 @@
   const limiteCredito = ref(null)
   const validade = ref('')
 
-  const cpfCnpjMask = computed(() =>
-    cpfCnpj.value.length <= 14 ? '###.###.###-##' : '##.###.###/####-##'
-  )
-
-  const telefoneCelularMask = computed(() => {
-    return fone.value && fone.value.replace(/\D/g, '').length > 10
-      ? '(##) # ####-####' // Celular
-      : '(##) ####-####' // Telefone fixo
-  })
-
   const handleFormSubmit = async () => {
     isLoading.value = true
 
@@ -240,7 +238,8 @@
     validate('uf', uf.value, { required: true, length: 2 })
     validate('fone', fone.value, {
       required: true,
-      custom: (value) => /^\(\d{2}\) \d{4,5}-\d{4}$/.test(String(value)),
+      custom: (value) =>
+        /^\(\d{2}\) \d{1}(?: \d{4}|\d{4})-\d{4}$/.test(String(value)),
     })
     validate('limiteCredito', limiteCredito.value ?? 0, {
       required: true,
@@ -256,7 +255,7 @@
       return
     }
 
-    const cepSemMascara = cep.value.replace(/\D/g, '');
+    const cepSemMascara = cep.value.replace(/\D/g, '')
 
     const data = {
       idUsuario,
@@ -272,7 +271,7 @@
       uf: uf.value,
       complemento: complemento.value,
       fone: fone.value,
-      limiteCredito: limiteCredito.value,
+      limiteCredito: Number(limiteCredito.value),
       validade: validade.value,
     }
 
@@ -318,7 +317,7 @@
         codigo.value = data.codigo
         nome.value = data.nome
         cpfCnpj.value = data.cpfCnpj
-        cep.value = '13076-580'//data.cep.toString()
+        cep.value = '13076-580' //data.cep.toString()
         logradouro.value = data.logradouro
         endereco.value = data.endereco
         numero.value = data.numero

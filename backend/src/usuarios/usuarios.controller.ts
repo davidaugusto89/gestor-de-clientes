@@ -19,6 +19,21 @@ export class UsuariosController {
   constructor(private readonly usuariosService: UsuariosService) {}
 
   /**
+   * Lista todos os usuários.
+   * @returns Uma lista de usuários.
+   */
+  @ApiOperation({ summary: 'Lista todos os usuários' })
+  @ApiResponse({
+    status: 200,
+    description: 'Lista de usuários.',
+    type: [UsuarioEntity],
+  })
+  @Get()
+  async findAll(): Promise<UsuarioEntity[]> {
+    return this.usuariosService.findAll();
+  }
+
+  /**
    * Cria um novo usuário.
    *
    * @param createUsuarioDto - Dados parciais para criar um novo usuário

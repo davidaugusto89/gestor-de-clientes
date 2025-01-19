@@ -88,4 +88,13 @@ export class UsuariosService {
 
     await this.userRepository.save(user);
   }
+
+  /**
+   * Procura todos os usuários.
+   *
+   * @returns Um array com todos os usuários encontrados.
+   */
+  async findAll(): Promise<UsuarioEntity[]> {
+    return this.userRepository.find();
+  }
 }

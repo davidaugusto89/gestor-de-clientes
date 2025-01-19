@@ -63,13 +63,4 @@
   onMounted(() => {
     loadInfo()
   })
-
-  import { useToastStore } from '@/stores/toastStore'
-
-  const toastStore = useToastStore()
-
-  onMounted(() => {
-    console.log('------------toastStore', toastStore)
-    toastStore.showNextToast()
-  })
 </script>

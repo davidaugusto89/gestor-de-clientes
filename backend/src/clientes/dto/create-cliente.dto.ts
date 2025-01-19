@@ -52,8 +52,7 @@ export class CreateClienteDto {
 
   @ApiProperty({ example: '12345678', description: 'CEP do cliente' })
   @IsNotEmpty({ message: 'O CEP do cliente é obrigatório' })
-  // @IsNumberString({}, { message: 'O CEP do cliente deve ser um número' })
-  // @Length(8, 8, { message: 'O CEP do cliente deve ter 8 dígitos' })
+  @Length(8, 8, { message: 'O CEP do cliente deve ter 8 dígitos' })
   cep: number;
 
   @ApiProperty({
@@ -141,8 +140,8 @@ export class CreateClienteDto {
   @MinLength(14, {
     message: 'O telefone do cliente deve ter 14 caracteres',
   })
-  @MaxLength(15, {
-    message: 'O telefone do cliente deve ter no máximo 15 caracteres',
+  @MaxLength(16, {
+    message: 'O telefone do cliente deve ter no máximo 16 caracteres',
   })
   fone: string;
 
