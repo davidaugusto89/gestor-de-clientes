@@ -41,6 +41,10 @@ export class AuthService {
     };
 
     return {
+      id: user.id,
+      nome: user.nome,
+      email: user.email,
+      role: user.role,
       access_token: this.jwtService.sign(payload),
     };
   }
@@ -77,6 +81,7 @@ export class AuthService {
       id: newUser.id,
       nome: newUser.nome,
       email: newUser.email,
+      role: newUser.role,
       access_token: this.jwtService.sign(payload),
     };
   }

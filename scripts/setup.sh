@@ -27,6 +27,18 @@ else
 fi
 cd ..
 
+# 📦 Instalar dependências no backend
+echo "📦 Instalando dependências no backend..,"
+cd backend
+npm install
+cd ..
+
+# 📦 Instalar dependências no frontend
+echo "📦 Instalando dependências no frontend..."
+cd frontend
+npm install
+cd ..
+
 # Subir containers com Docker Compose
 echo "🐳 Subindo containers com Docker Compose..."
 docker-compose up -d --build

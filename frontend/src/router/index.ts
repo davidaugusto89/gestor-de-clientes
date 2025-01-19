@@ -8,8 +8,10 @@ import ClientesList from '@/views/ClientesList.vue'
 import ClienteForm from '@/views/ClienteForm.vue'
 import UsuariosList from '@/views/UsuariosList.vue'
 import UsuarioForm from '@/views/UsuarioForm.vue'
-import RecoveryPasswordPage from '@/views/RecoveryPasswordPage.vue'
 import ResetPasswordPage from '@/views/ResetPasswordPage.vue'
+import RegisterPage from '@/views/RegisterPage.vue'
+import ForgotPasswordPage from '@/views/ForgotPasswordPage.vue'
+import NotFoundPage from '@/views/NotFoundPage.vue'
 
 const routes = [
   {
@@ -20,8 +22,10 @@ const routes = [
       {
         path: '',
         component: LoginPage,
+        name: 'LoginPage',
       },
     ],
+    redirect: { name: 'LoginPage' },
   },
   {
     path: '/register',
@@ -30,7 +34,8 @@ const routes = [
     children: [
       {
         path: '',
-        component: RecoveryPasswordPage,
+        component: RegisterPage,
+        name: 'RegisterPage',
       },
     ],
   },
@@ -41,7 +46,8 @@ const routes = [
     children: [
       {
         path: '',
-        component: RecoveryPasswordPage,
+        component: ForgotPasswordPage,
+        name: 'ForgotPasswordPage',
       },
     ],
   },
@@ -53,8 +59,19 @@ const routes = [
       {
         path: '',
         component: ResetPasswordPage,
+        name: 'ResetPasswordPage',
       },
     ],
+  },
+
+  {
+    path: '/logout',
+    name: 'Logout',
+    beforeEnter(to, from, next) {
+      const authStore = useAuthStore()
+      authStore.logout()
+      next({ name: 'Login' })
+    },
   },
 
   {
@@ -69,30 +86,48 @@ const routes = [
         meta: { requiresAuth: true },
       },
       {
-        path: '/clientes',
+        path: 'clientes',
         component: ClientesList,
         name: 'ClientesList',
         meta: { requiresAuth: true },
       },
       {
-        path: '/clientes/:id',
+        path: 'clientes/novo',
+        component: ClienteForm,
+        name: 'ClientesNovo',
+        meta: { requiresAuth: true },
+      },
+      {
+        path: 'clientes/editar/:id',
         component: ClienteForm,
         name: 'EditClient',
         meta: { requiresAuth: true },
       },
       {
-        path: '/usuarios',
+        path: 'usuarios',
         component: UsuariosList,
         name: 'UsuariosList',
         meta: { requiresAuth: true },
       },
       {
-        path: '/usuarios/:id',
+        path: 'usuarios/novo',
+        component: UsuarioForm,
+        name: 'NovoUsuario',
+        meta: { requiresAuth: true },
+      },
+      {
+        path: 'usuarios/editar/:id',
         component: UsuarioForm,
         name: 'EditUsuario',
         meta: { requiresAuth: true },
       },
     ],
+  },
+
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: NotFoundPage,
   },
 ]
 
@@ -104,7 +139,7 @@ const router = createRouter({
 // Guard para verificar autenticação antes de acessar rotas privadas
 router.beforeEach((to, from, next) => {
   const authStore = useAuthStore()
-  const isAuthenticated = !!authStore.user // Verifica se o usuário está autenticado
+  const isAuthenticated = !!authStore.usuario // Verifica se o usuário está autenticado
 
   if (to.meta.requiresAuth && !isAuthenticated) {
     next({ name: 'Login' })

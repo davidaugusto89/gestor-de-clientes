@@ -5,14 +5,14 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
+  import { defineProps } from 'vue'
 
-const props = defineProps({
-  to: {
-    type: String,
-    required: true
-  }
-})
+  const props = defineProps({
+    to: {
+      type: String,
+      required: true,
+    },
+  })
 
-const { to } = props
+  const { to } = props
 </script>

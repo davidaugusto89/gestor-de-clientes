@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Resetar de senha</h1>
+    <h1>Recuperação de senha</h1>
   </div>
 </template>
 

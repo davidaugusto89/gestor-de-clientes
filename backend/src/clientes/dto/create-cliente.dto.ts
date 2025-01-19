@@ -8,6 +8,8 @@ import {
   MinLength,
   Length,
   Min,
+  IsNumberString,
+  Max,
 } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsCpfCnpj } from '@/validators/cpf-cnpj.validator';
@@ -50,8 +52,8 @@ export class CreateClienteDto {
 
   @ApiProperty({ example: '12345678', description: 'CEP do cliente' })
   @IsNotEmpty({ message: 'O CEP do cliente é obrigatório' })
-  @IsNumber({}, { message: 'O CEP do cliente deve ser um número' })
-  @Length(8, 8, { message: 'O CEP do cliente deve ter 8 caracteres' })
+  // @IsNumberString({}, { message: 'O CEP do cliente deve ser um número' })
+  // @Length(8, 8, { message: 'O CEP do cliente deve ter 8 dígitos' })
   cep: number;
 
   @ApiProperty({
@@ -83,8 +85,8 @@ export class CreateClienteDto {
   @ApiProperty({ example: '123', description: 'Número do cliente' })
   @IsNotEmpty({ message: 'O número do cliente é obrigatório' })
   @IsNumber({}, { message: 'O número do cliente deve ser um número' })
-  @MaxLength(20, {
-    message: 'O número do cliente deve ter no máximo 20 caracteres',
+  @Max(999999999999999, {
+    message: 'O número do cliente deve ter no máximo 15 dígitos',
   })
   numero: string;
 
