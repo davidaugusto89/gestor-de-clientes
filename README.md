@@ -60,6 +60,112 @@ A API está documentada com **Swagger**. Após iniciar o backend, acesse:
 [http://localhost/api/docs](http://localhost/api/docs)
 
 
+## Estrutura de Pastas
+
+Abaixo está a estrutura do projeto com explicação das principais pastas:
+```
+├── backend
+│   ├── src
+│   │   ├── auth
+│   │   │   └── dto
+│   │   ├── clientes
+│   │   │   ├── dto
+│   │   │   ├── entities
+│   │   │   └── mocks
+│   │   ├── database
+│   │   │   ├── config
+│   │   │   ├── migrations
+│   │   │   └── seeders
+│   │   ├── decorators
+│   │   ├── enums
+│   │   ├── guards
+│   │   ├── interfaces
+│   │   ├── mailer
+│   │   │   └── interfaces
+│   │   ├── strategies
+│   │   ├── templates
+│   │   ├── usuarios
+│   │   │   ├── dto
+│   │   │   ├── entities
+│   │   │   └── mocks
+│   │   └── validators
+├── frontend
+│   ├── public
+│   └── src
+│       ├── assets
+│       ├── components
+│       │   └── global
+│       ├── composables
+│       ├── helpers
+│       │   └── validations
+│       ├── layouts
+│       ├── router
+│       ├── services
+│       ├── stores
+│       ├── utils
+│       └── views
+│           ├── Clientes
+│           ├── Dashboard
+│           ├── Login
+│           └── Usuarios
+├── nginx
+└── scripts
+```
+
+#### **Backend**
+- **src**: Diretório principal do código backend.
+  - **auth**: Lógica relacionada à autenticação de usuários.
+    - **dto**: Objetos de transferência de dados usados na autenticação.
+  - **clientes**: Funcionalidades relacionadas a clientes.
+    - **dto**: Objetos de transferência de dados para clientes.
+    - **entities**: Classes que representam a estrutura de dados do cliente.
+    - **mocks**: Dados simulados para testes ou desenvolvimento local.
+  - **database**: Configuração e gerenciamento do banco de dados.
+    - **config**: Configurações gerais do banco de dados.
+    - **migrations**: Scripts de migração do banco de dados.
+    - **seeders**: Scripts para popular o banco com dados iniciais.
+  - **decorators**: Decorators personalizados para funções ou classes.
+  - **enums**: Enumerações utilizadas no backend.
+  - **guards**: Classes que implementam lógica de proteção de rotas.
+  - **interfaces**: Interfaces TypeScript para padronizar objetos.
+  - **mailer**: Configurações e lógica para envio de e-mails.
+    - **interfaces**: Interfaces para os serviços de e-mail.
+  - **strategies**: Estratégias para autenticação ou outras funcionalidades.
+  - **templates**: Templates utilizados para envio de e-mails ou relatórios.
+  - **usuarios**: Funcionalidades relacionadas aos usuários do sistema.
+    - **dto**: Objetos de transferência de dados para usuários.
+    - **entities**: Classes que representam a estrutura de dados do usuário.
+    - **mocks**: Dados simulados para desenvolvimento ou testes.
+  - **validators**: Lógica de validação de dados.
+
+#### **Frontend**
+- **public**: Arquivos estáticos acessíveis publicamente (imagens, ícones, etc.).
+- **src**: Diretório principal do código frontend.
+  - **assets**: Recursos estáticos, como imagens, fontes e arquivos CSS.
+  - **components**: Componentes reutilizáveis da interface.
+    - **global**: Componentes globais utilizados em todo o projeto.
+  - **composables**: Funções reutilizáveis utilizando Composition API do Vue 3.
+  - **helpers**: Funções auxiliares.
+    - **validations**: Validações reutilizáveis no frontend.
+  - **layouts**: Layouts utilizados nas páginas do projeto.
+  - **router**: Configurações das rotas do Vue Router.
+  - **services**: Comunicação com APIs ou serviços externos.
+  - **stores**: Gerenciamento de estado usando Pinia ou Vuex.
+  - **utils**: Funções utilitárias reutilizáveis.
+  - **views**: Páginas principais da aplicação.
+    - **Clientes**: Páginas relacionadas à gestão de clientes.
+    - **Dashboard**: Painel principal do sistema.
+    - **Login**: Página de autenticação.
+    - **Usuarios**: Páginas relacionadas à gestão de usuários.
+
+#### **nginx**
+Configurações do servidor NGINX, como regras de proxy ou redirecionamento.
+
+#### **scripts**
+Scripts auxiliares para automação ou setup do projeto (ex.: configuração inicial).
+
+---
+
 ## 🧪 Testes
 
 ### Testes Unitários
@@ -67,7 +173,6 @@ Os testes serão implementados com **Jest** no backend. Para executar:
 cd backend
 npm run test
 
----
 
 **Autor:**
 [David Augusto](https://github.com/davidaugusto89/)
