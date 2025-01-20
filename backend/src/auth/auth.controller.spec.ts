@@ -5,6 +5,7 @@ import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';
 import { ForgotPasswordDto } from './dto/forgot-password.dto';
 import { ResetPasswordDto } from './dto/reset-password.dto';
+import { UsuarioRole } from '@/enums/roles.enum';
 
 describe('AuthController', () => {
   let authController: AuthController;
@@ -40,7 +41,14 @@ describe('AuthController', () => {
         email: 'test@example.com',
         senha: 'password',
       };
-      const mockResult = { access_token: 'mockToken' };
+
+      const mockResult = {
+        id: BigInt(1),
+        email: loginDto.email,
+        nome: 'Test User',
+        role: UsuarioRole.USER,
+        access_token: 'mockToken',
+      };
 
       jest.spyOn(authService, 'login').mockResolvedValue(mockResult);
 
@@ -63,6 +71,7 @@ describe('AuthController', () => {
         id: BigInt(1),
         email: registerDto.email,
         nome: registerDto.nome,
+        role: UsuarioRole.USER,
         access_token: 'mockToken',
       };
 
