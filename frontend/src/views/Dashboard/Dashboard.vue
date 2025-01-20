@@ -53,15 +53,14 @@
 
     <!-- Tabela de Clientes Recentes -->
     <div class="bg-white shadow rounded-lg p-4">
-
-      <h2 class="text-lg font-bold text-gray-800 mb-4">Clientes Recentes (últimos 5 registros)</h2>
+      <h2 class="text-lg font-bold text-gray-800 mb-4">
+        Clientes Recentes (últimos 5 registros)
+      </h2>
       <div class="flex justify-center items-center h-[200px]" v-if="isLoading">
         <Spinner width="w-[100px]" height="h-[100px]" color="text-[#150F3E]" />
       </div>
 
-      <table
-        class="w-full table-auto border-collapse border border-gray-200"
-      >
+      <table class="w-full table-auto border-collapse border border-gray-200">
         <thead class="bg-gray-50">
           <tr>
             <th
@@ -79,8 +78,10 @@
             >
               Data de Cadastro
             </th>
-            <th class="border border-gray-200 px-4 py-2 text-left text-sm text-gray-600">
-                Validade
+            <th
+              class="border border-gray-200 px-4 py-2 text-left text-sm text-gray-600"
+            >
+              Validade
             </th>
             <th
               class="border border-gray-200 px-4 py-2 text-left text-sm text-gray-600"
@@ -162,12 +163,12 @@
 
   // Computed para formatar créditos vencidos
   const formattedTotalLimite = computed(() =>
-  formatCurrency(
-    clientes.value
-      .filter(cliente => new Date(cliente.validade) > new Date())
-      .reduce((total, cliente) => total + (cliente.limiteCredito || 0), 0)
+    formatCurrency(
+      clientes.value
+        .filter((cliente) => new Date(cliente.validade) > new Date())
+        .reduce((total, cliente) => total + (cliente.limiteCredito || 0), 0)
+    )
   )
-);
 
   // Carregar dados de clientes
   const loadClientes = async () => {

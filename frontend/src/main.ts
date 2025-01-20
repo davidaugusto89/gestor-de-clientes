@@ -6,7 +6,7 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
-import VMoney from 'v-money3';
+import VMoney from 'v-money3'
 
 const app = createApp(App)
 

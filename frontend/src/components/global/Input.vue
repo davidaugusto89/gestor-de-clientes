@@ -7,7 +7,7 @@
 
     <div class="relative">
       <!-- Campo de dinheiro -->
-       <input
+      <input
         v-if="type === 'money'"
         ref="inputRef"
         :id="id"
@@ -125,14 +125,14 @@
   })
 
   // Mascara money
-// Opções para v-money
-const moneyOptions = {
-  prefix: 'R$ ',
-  suffix: '',
-  thousands: '.',
-  decimal: ',',
-  precision: 2,
-};
+  // Opções para v-money
+  const moneyOptions = {
+    prefix: 'R$ ',
+    suffix: '',
+    thousands: '.',
+    decimal: ',',
+    precision: 2,
+  }
 
   // Função para limpar valores mascarados
   const cleanValue = (value: string) => value.replace(/[^0-9]/g, '')

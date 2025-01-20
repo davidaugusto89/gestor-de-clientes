@@ -1,5 +1,10 @@
 import { ref, computed } from 'vue'
-import { validateCPF, validateCNPJ, validateEmail, validateTelefone } from '@/helpers/validations'
+import {
+  validateCPF,
+  validateCNPJ,
+  validateEmail,
+  validateTelefone,
+} from '@/helpers/validations'
 
 export function useValidation() {
   const errors = ref<Record<string, string>>({})
@@ -9,7 +14,7 @@ export function useValidation() {
     cpf: validateCPF,
     cnpj: validateCNPJ,
     email: validateEmail,
-    'Telefone': validateTelefone,
+    Telefone: validateTelefone,
     'CPF/CNPJ': (value: string) => validateCPF(value) || validateCNPJ(value),
   }
 
