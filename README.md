@@ -17,7 +17,7 @@ Este é um Gestor de Clientes que utiliza **NestJS** para o backend e **VueJS** 
 - **VueJS** com **Vite**: Framework frontend moderno e rápido.
 
 ### Infraestrutura
-- **Docker**:
+- **Docker**
 - **MariaDB**: Banco de dados relacional.
 - **PhpMyAdmin**: Gerenciamento visual do banco.
 - **Mailhog**: SMTP local
@@ -37,7 +37,6 @@ Este é um Gestor de Clientes que utiliza **NestJS** para o backend e **VueJS** 
 ## 🧩 Decisões de Arquitetura
 
 - **Backend Modular**: Estruturado em módulos independentes como Clientes, Usuários e Auth, para maior organização e manutenibilidade.
-- **Padrão Service**: Facilitando a criação de testes e o reaproveitamento de lógica.
 - **Frontend Escalável**: Separação clara entre estado, componentes e rotas, promovendo extensibilidade.
 - **Infraestrutura Simplificada**: Configuração via Docker para garantir consistência no ambiente de desenvolvimento.
 
@@ -47,6 +46,7 @@ Este é um Gestor de Clientes que utiliza **NestJS** para o backend e **VueJS** 
 
 ### Pré-requisitos
 - **Docker** e **Docker Compose** instalados.
+- **npm** instalado
 - Permissões para executar scripts (`chmod +x scripts/setup.sh` no Linux/Mac).
 
 ### Passos para Configuração
@@ -75,6 +75,33 @@ Este é um Gestor de Clientes que utiliza **NestJS** para o backend e **VueJS** 
    - **Backend sem proxy reverso:** [http://localhost:3000/api](http://localhost:3000/api)
    - **Mailhog**: [http://localhost:8025](http://localhost:8025)
    - **PhpMyAdmin:** [http://localhost:8081](http://localhost:8081)
+
+
+### Detalhes sobre Serviços Externos
+
+#### PhpMyAdmin
+- **Descrição**: Interface para gerenciar o banco de dados MariaDB.
+- **Acesso**: [http://localhost:8081](http://localhost:8081).
+
+#### Mailhog
+- **Descrição**: Serviço local para capturar e visualizar emails enviados pelo sistema.
+- **Acesso**: [http://localhost:8025](http://localhost:8025)
+- **Utilização**:
+  - Teste recursos relacionados a emails sem o risco de enviar mensagens reais.
+
+---
+
+## 👤 Credenciais de Login
+
+Use os seguintes dados para acessar o sistema:
+
+### Administrador
+- **Email:** admin@example.com
+- **Senha:** 123456
+
+### Usuário Padrão
+- **Email:** user@example.com
+- **Senha:** 123456
 
 ---
 
