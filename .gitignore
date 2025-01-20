@@ -9,6 +9,7 @@ yarn-error.log*
 .env.*.local
 .DS_Store
 /backend/dist/
+/backend/coverage/
 /public/assets/
 
 # Docker
