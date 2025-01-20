@@ -288,8 +288,10 @@ Scripts auxiliares para automação ou setup do projeto (ex.: configuração ini
 | Finalizar CRUD de usuários        | Em progresso | Alta       |
 | Testes e2e no backend             | Não iniciado | Média      |
 | Testes e2e no frontend            | Não iniciado | Média      |
-| Testes no frontend                | Não iniciado | Alta       |
+| Testes unitários no frontend                | Não iniciado | Alta       |
 | Adicionar gráficos no dashboard  | Não iniciado | Média      |
+| Instalar e configurar Husky para pre-commit |	Não iniciado |	Média |
+| Adicionar Jenkins para simular deploy local |	Não iniciado | Média |
 
 ---
 
