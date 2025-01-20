@@ -8,13 +8,28 @@ Este é um Gestor de Clientes que utiliza **NestJS** para o backend e **VueJS** 
 ## 🛠 Tecnologias Utilizadas
 
 ### Backend
-- **NestJS** com **TypeORM**: Estrutura modular e escalável para desenvolvimento backend.
-- **Swagger**: Documentação interativa para a API.
-- **Jest**: Testes unitários (futuramente).
-- **Testes E2E**: Planejados para desenvolvimento futuro.
+- **NestJS** com **TypeORM**: Estrutura modular e escalável para desenvolvimento backend, com suporte a ORM para bancos relacionais.
+- **JWT**: Gerenciamento de autenticação segura.
+- **Swagger**: Geração de documentação interativa para a API.
+- **Jest**: Testes unitários configurados com alta flexibilidade.
+- **Supertest**: Testes de integração para endpoints REST.
+- **Handlebars** e **Nodemailer**: Configurados para envio de emails personalizados.
+- **Class-Validator** e **Class-Transformer**: Validação e transformação de dados robusta e declarativa.
+- **dotenv**: Gerenciamento seguro de variáveis de ambiente.
+- **ESLint** e **Prettier**: Ferramentas para garantir qualidade e padronização do código.
+- **Nodemon**: Automação de reinicialização do servidor durante o desenvolvimento.
+- **TypeScript**: Superset do JavaScript que adiciona tipos estáticos ao projeto.
 
 ### Frontend
 - **VueJS** com **Vite**: Framework frontend moderno e rápido.
+- **Pinia**: Gerenciamento de estado leve e eficiente.
+- **Vue Router**: Gerenciamento de rotas no frontend.
+- **TailwindCSS**: Estilização com classes utilitárias, permitindo desenvolvimento rápido.
+- **SweetAlert2**: Alertas bonitos e interativos.
+- **Simple Datatables**: Manipulação de tabelas de dados.
+- **Vitest**: Testes unitários no frontend.
+- **Cypress**: Testes E2E no frontend.
+- **Prettier** e **ESLint**: Garantia de padronização de código e boas práticas.
 
 ### Infraestrutura
 - **Docker**
@@ -272,6 +287,7 @@ Scripts auxiliares para automação ou setup do projeto (ex.: configuração ini
 |-----------------------------------|--------------|------------|
 | Finalizar CRUD de usuários        | Em progresso | Alta       |
 | Testes e2e no backend             | Não iniciado | Média      |
+| Testes e2e no frontend            | Não iniciado | Média      |
 | Testes no frontend                | Não iniciado | Alta       |
 | Adicionar gráficos no dashboard  | Não iniciado | Média      |
 
