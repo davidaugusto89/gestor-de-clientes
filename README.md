@@ -34,6 +34,24 @@ Este é um Gestor de Clientes que utiliza **NestJS** para o backend e **VueJS** 
 
 ---
 
+## ✅ Funcionalidades Implementadas
+
+### Backend
+- **Autenticação com JWT**: Implementada com suporte a login, recuperação e redefinição de senha.
+- **Gestão de Clientes**: CRUD completo.
+- **Arquitetura Modular**: Utilizando NestJS, com módulos separados para Auth, Clientes e Usuários.
+- **Cobertura de Código**: Para os principais módulos, com testes unitários no backend.
+
+### Frontend
+- **Formulários de Login e Registro**: Integração completa com o backend.
+- **Gestão de Clientes**:
+  - Interface intuitiva para criação, edição e exclusão de registros.
+  - Busca e filtros avançados.
+  - Preenchimento automático de endereço com integração à API ViaCEP.
+- **Integração com API**: Comunicação eficiente com os endpoints REST do backend.
+
+---
+
 ## 🧩 Decisões de Arquitetura
 
 - **Backend Modular**: Estruturado em módulos independentes como Clientes, Usuários e Auth, para maior organização e manutenibilidade.
@@ -69,25 +87,29 @@ Este é um Gestor de Clientes que utiliza **NestJS** para o backend e **VueJS** 
    - Exibe os links para acesso ao frontend, backend e PhpMyAdmin.
 
 3. Acesse:
-   - **Frontend via proxy reverso:** [http://localhost](http://localhost)
-   - **Frontend sem proxy reverso:** [http://localhost:5173](http://localhost:5173)
-   - **Backend via proxy reverso:** [http://localhost/api](http://localhost/api)
-   - **Backend sem proxy reverso:** [http://localhost:3000/api](http://localhost:3000/api)
-   - **Mailhog**: [http://localhost:8025](http://localhost:8025)
-   - **PhpMyAdmin:** [http://localhost:8081](http://localhost:8081)
-
+   - **Frontend:** [http://localhost](http://localhost)
 
 ### Detalhes sobre Serviços Externos
 
 #### PhpMyAdmin
 - **Descrição**: Interface para gerenciar o banco de dados MariaDB.
 - **Acesso**: [http://localhost:8081](http://localhost:8081).
+- **Credenciais**:
+  - **Usuário:** root
+  - **Senha:** rootpassword
+- **Exemplo de Utilização**:
+  - Acesse e inspecione os dados seedados no banco.
+  - Teste consultas SQL, como:
+    ```sql
+    SELECT * FROM usuarios WHERE email = 'admin@example.com';
+    ```
 
 #### Mailhog
 - **Descrição**: Serviço local para capturar e visualizar emails enviados pelo sistema.
 - **Acesso**: [http://localhost:8025](http://localhost:8025)
-- **Utilização**:
-  - Teste recursos relacionados a emails sem o risco de enviar mensagens reais.
+- **Exemplo de Utilização**:
+  - Teste o fluxo de recuperação de senha.
+  - Visualize o email enviado pelo sistema para redefinição de senha e valide o link gerado.
 
 ---
 
@@ -102,6 +124,17 @@ Use os seguintes dados para acessar o sistema:
 ### Usuário Padrão
 - **Email:** user@example.com
 - **Senha:** 123456
+
+---
+
+## 🔗 Links Úteis
+
+- **Documentação da API (Swagger):** [http://localhost/api/docs](http://localhost/api/docs)
+- **Frontend (sem proxy):** [http://localhost:5173](http://localhost:5173)
+- **Backend (com proxy):** [http://localhost:3000/api](http://localhost/api)
+- **Backend (sem proxy):** [http://localhost:3000/api](http://localhost:3000/api)
+- **PhpMyAdmin:** [http://localhost:8081](http://localhost:8081)
+- **Mailhog:** [http://localhost:8025](http://localhost:8025)
 
 ---
 
@@ -221,9 +254,26 @@ Scripts auxiliares para automação ou setup do projeto (ex.: configuração ini
 ## 🧪 Testes
 
 ### Testes Unitários
-Os testes serão implementados com **Jest** no backend. Para executar:
-cd backend
-npm run test
+- Os testes no backend foram implementados para validar:
+  - Fluxo de autenticação (login, registro, redefinição de senha).
+  - Funcionalidades do módulo de clientes.
+  - Funcionalidades do módulo de usuários.
+- **Como executar**:
+  ```bash
+  cd backend
+  npm run test
+  ```
+
+---
+
+## 📋 Backlog e Melhorias Futuras
+
+| Feature                           | Status       | Prioridade |
+|-----------------------------------|--------------|------------|
+| Finalizar CRUD de usuários        | Em progresso | Alta       |
+| Testes e2e no backend             | Não iniciado | Média      |
+| Testes no frontend                | Não iniciado | Alta       |
+| Adicionar gráficos no dashboard  | Não iniciado | Média      |
 
 ---
 
